@@ -1,8 +1,24 @@
-.player1 {
-    margin-left: 40px;
+body {
+    font-family:arial;
+	font-size:12px;
+    background-image: url("../images/wallpaper.jpg");
+	margin:0;
+	padding:0;
+    overflow: hidden;
 }
-.title-card {
-    margin-right: 20px;
-    margin-bottom: 50px;
-    margin-top:30px;
+#player1 {
+    margin-left: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    display: none;
+}
+#player2 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    display: none;
+}
+.jumbotron {
+    text-align: center;
 }

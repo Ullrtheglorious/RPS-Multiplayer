@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>RPS Multiplayer</title>
+    <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/style/style.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -12,28 +13,54 @@
 <body>
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
-            <h1 class="display-3">Fluid jumbotron</h1>
-            <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+            <h1 class="display-3">RPS Multiplayer</h1>
+            <p class="lead">RPS game using firebase to connect player one and player two</p>
         </div>
     </div>
 <div class="container">
     <div class="row">
-        <div class="card col-sm-5 player1">
+        <div class="card col-sm-5" id="player1">
             <div class="card-body">
                 <h4 class="card-title">Player 1</h4>
                 <p class="card-text">
-                    Some quick example text to build on the card title and make up the bulk of the card's content.
+                    player ones area for rock paper scissor selectors and score
                 </p>
-                <a href="#!" class="btn btn-primary">Go somewhere</a>
+                <img src="assets/images/rpsIconsleft.jpg" alt="left players rps image" usemap="#p1Map">
+                
+                <map name="p1Map">
+                    <area shape="rect" coords="0,390,415,545" id="p1scissors" alt="alttext">
+                    <area shape="rect" coords="0,180,415,389" id="p1paper" alt="alttext">
+                    <area shape="rect" coords="0,0,415,179" id="p1rock"  alt="alttext">
+                </map>
             </div>
         </div>
-        <div class="card col-sm-5 offset-1">
+        <div class="card col-sm-5 offset-1" id="player2">
             <div class="card-body">
                 <h4 class="card-title">Player 2</h4>
                 <p class="card-text">
-                    Some quick example text to build on the card title and make up the bulk of the card's content.
+                    player two area for rock paper scissor selectors and score
                 </p>
-                <a href="#!" class="btn btn-primary">Go somewhere</a>
+                <img src="assets/images/rpsIcons.jpg" alt="left players rps image" usemap="#mapname">
+                
+                <map name="mapname">
+                    <area shape="rect" coords="0,390,415,545" id="p2scissors" alt="alttext">
+                    <area shape="rect" coords="0,180,415,389" id="p2paper" alt="alttext">
+                    <area shape="rect" coords="0,0,415,179" id="p2rock" alt="alttext">
+                </map>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="card col-sm-8 playerForm">
+            <div class="card-body ">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <button class="btn btn-success" id="nameSubmit" type="button">Enter Player Name</button>
+                    </div>
+                    <input type="text" class="form-control" id="nameData" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                </div>
             </div>
         </div>
     </div>
