@@ -1,10 +1,12 @@
-body {
-    font-family:arial;
-	font-size:12px;
-    background-image: url("../images/wallpaper.jpg");
-	margin:0;
-	padding:0;
-    overflow: hidden;
+body { 
+  background: url("../images/wallpaper.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.playerForm {
+    background-color:rgba(0, 0, 0, 0.510) !important;
 }
 #player1 {
     margin-left: 40px;
@@ -12,13 +14,23 @@ body {
     margin-bottom: 20px;
     text-align: center;
     display: none;
+    background-color: rgba(0, 0, 0, 0.510);
+    color: white;
 }
 #player2 {
     margin-top: 20px;
     margin-bottom: 20px;
     text-align: center;
     display: none;
+    background-color: rgba(0, 0, 0, 0.510);
+    color: white;
 }
-.jumbotron {
+.jumbotron-fluid {
     text-align: center;
+    background-color:rgba(0, 0, 0, 0.510) !important;
+    color: white;
+}
+li {
+    list-style-type: none;
+    text-align: left;
 }
