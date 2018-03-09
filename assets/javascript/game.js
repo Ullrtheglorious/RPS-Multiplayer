@@ -21,61 +21,55 @@ var yourPlayerName = "";
 var player1Choice = "";
 var player2Choice = "";
 
-var turn = 1;
+var turn = false;
 
 $("#nameSubmit").on("click", function () {
     event.preventDefault();
+
     humanName = $("#nameData").val().trim();
     console.log(humanName);
-    $("#nameData").val("");
+    if (($('#nameData').val().trim() !== "") && !(player1 && player2)) {
+
+        if (player1 === null) {
+            humanName = $("#nameData").val().trim();
+            console.log("adding player 1");
+            player1 = {
+                name: humanName,
+                wins: 0,
+                losses: 0,
+                ties: 0,
+                choice: "",
+                turn: false
+            };
+
+            database.ref('players/player1').set(player1);
+            database.ref('players/player1').onDisconnect().remove();
+
+        } else if ((player1 !== null) && (player2 === null)) {
+            console.log('Adding Player 2');
+
+            turn = true;
+
+            humanName = $("#nameData").val().trim();
+
+            player2 = {
+                name: humanName,
+                wins: 0,
+                losses: 0,
+                ties: 0,
+                choice: "",
+                turn: false
+            };
+            database.ref('players/player1').update({ 'turn': turn });
+            database.ref('players/player2').set(player2);
+            database.ref('turn').onDisconnect().remove();
+            database.ref('players/player2').onDisconnect().remove();
+        }
+    }
     $(".playerForm").hide("fast");
     $("#player1").show("fast");
     $("#player2").show("fast");
     $(".jumbotron").slideUp("fast");
-    
-
-    // if (($('#nameData').val().trim() !== "") && !(player1 && player2)) {
-
-    //     if (player1 === null) {
-    //         humanName = $("#nameData").val().trim();
-
-    //         player1 = {
-    //             name: humanName,
-    //             wins: 0,
-    //             losses: 0,
-    //             ties: 0,
-    //             choice: "",
-    //             turn: false
-    //         };
-    //         $('.player-input').fadeOut('slow');
-    //         $('#add-player').fadeOut('slow');
-    //         $('#p1Stats').show('slow');
-    //         database.ref('players/player1').set(player1);
-    //         database.ref('players/player1').onDisconnect().remove();
-    //     } else if ((player1 !== null) && (player2 === null)) {
-    //         console.log('Adding Player 2');
-
-    //         turn = true;
-
-    //         humanName = $("#nameData").val().trim();
-
-    //         player2 = {
-    //             name: humanName,
-    //             wins: 0,
-    //             losses: 0,
-    //             ties: 0,
-    //             choice: "",
-    //             turn: false
-    //         };
-    //         $('.player-input').fadeOut('slow');
-    //         $('#add-player').fadeOut('slow');
-    //         $('#p2Stats').show('slow');
-    //         database.ref('players/player1').update({ 'turn': turn });
-    //         database.ref('players/player2').set(player2);
-    //         database.ref('turn').onDisconnect().remove();
-    //         database.ref('players/player2').onDisconnect().remove();
-    //     }
-    // }
 });
 
 $("#p1rock").on("click", function () {
