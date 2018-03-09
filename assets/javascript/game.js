@@ -24,8 +24,8 @@ var player2Choice = "";
 var turn = false;
 
 $("#nameSubmit").on("click", function () {
-    event.preventDefault();
 
+    event.preventDefault();
     humanName = $("#nameData").val().trim();
     console.log(humanName);
     if (($('#nameData').val().trim() !== "") && !(player1 && player2)) {
@@ -41,7 +41,7 @@ $("#nameSubmit").on("click", function () {
                 choice: "",
                 turn: false
             };
-
+            $("#playerName1").text(player1.name);
             database.ref('players/player1').set(player1);
             database.ref('players/player1').onDisconnect().remove();
 
@@ -60,6 +60,7 @@ $("#nameSubmit").on("click", function () {
                 choice: "",
                 turn: false
             };
+            $("#playerName2").text(player2.name);
             database.ref('players/player1').update({ 'turn': turn });
             database.ref('players/player2').set(player2);
             database.ref('turn').onDisconnect().remove();
@@ -96,3 +97,4 @@ $("#p2paper").on("click", function () {
     event.preventDefault();
     console.log("Player two chooses Paper");
 });
+
