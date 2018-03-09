@@ -65,9 +65,10 @@ $("#nameSubmit").on("click", function () {
             database.ref('players/player2').set(player2);
             database.ref('turn').onDisconnect().remove();
             database.ref('players/player2').onDisconnect().remove();
+            $(".playerForm").hide("fast");
         }
     }
-    $(".playerForm").hide("fast");
+    
     $("#player1").show("fast");
     $("#player2").show("fast");
     $(".jumbotron").slideUp("fast");
