@@ -29,11 +29,13 @@ database.ref('players').on("value", function (snapshot) {
         player1 = snapshot.val().player1;
         player1Name = player1.name;
         $("#playerName1").text(player1.name);
+        $(".playerForm").hide("fast");
 
     } else if (snapshot.child("player2").exists) {
         player2 = snapshot.val().player2;
         player1Name = player2.name;
         $("#playerName2").text(player2.name);
+        $(".playerForm").hide("fast");
     }
 
 });
@@ -88,7 +90,7 @@ $("#nameSubmit").on("click", function () {
             database.ref('players/player2').set(player2);
             database.ref('turn').onDisconnect().remove();
             database.ref('players/player2').onDisconnect().remove();
-            $(".playerForm").hide("fast");
+            
         }
     }
     
