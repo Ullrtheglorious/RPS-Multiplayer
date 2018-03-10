@@ -23,6 +23,29 @@ var player2Choice = "";
 
 var turn = false;
 
+database.ref('players').on("value", function (snapshot) {
+
+    if (snapshot.child("player1").exists) {
+        player1 = snapshot.val().player1;
+        player1Name = player1.name;
+        $("#playerName1").text(player1.name);
+
+    } else if (snapshot.child("player2").exists) {
+        player2 = snapshot.val().player2;
+        player1Name = player2.name;
+        $("#playerName2").text(player2.name);
+    }
+
+});
+
+
+
+
+
+
+
+
+
 $("#nameSubmit").on("click", function () {
 
     event.preventDefault();
@@ -41,7 +64,7 @@ $("#nameSubmit").on("click", function () {
                 choice: "",
                 turn: false
             };
-            $("#playerName1").text(player1.name);
+            
             database.ref('players/player1').set(player1);
             database.ref('players/player1').onDisconnect().remove();
 
