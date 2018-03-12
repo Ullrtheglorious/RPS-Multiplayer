@@ -38,14 +38,14 @@
                 <h4 class="card-title" id="playerName1"></h4>
                 <img src="assets/images/rpsIconsleft.jpg" class="oldie" alt="left players rps image" usemap="#p1Map">
                 <map name="p1Map">
-                    <area shape="rect" coords="0,390,415,545" id="p1scissors" alt="alttext">
-                    <area shape="rect" coords="0,180,415,389" id="p1paper" alt="alttext">
-                    <area shape="rect" coords="0,0,415,179" id="p1rock"  alt="alttext">
+                    <!-- Scissors -->
+                    <area shape="rect" coords="0,390,415,545" id="p1Selection" data="1" alt="alttext">
+                    <!-- paper -->
+                    <area shape="rect" coords="0,180,415,389" id="p1Selection" data="2" alt="alttext">
+                    <!-- rock -->
+                    <area shape="rect" coords="0,0,415,179" id="p1Selection"  data="3" alt="alttext">
                 </map>
-                <ul class="card-text">
-                    <li>Wins: 0</li>
-                    <li>Losses: 0</li>
-                    <li>Draws: 0</li>
+                <ul class="card-text p1Stats">
                 </ul>
             </div>
         </div>
@@ -54,14 +54,14 @@
                 <h4 class="card-title" id="playerName2"></h4>
                 <img src="assets/images/rpsIcons.jpg" class="oldie" alt="left players rps image" usemap="#mapname">               
                 <map name="mapname">
-                    <area shape="rect" coords="0,390,415,545" id="p2scissors" alt="alttext">
-                    <area shape="rect" coords="0,180,415,389" id="p2paper" alt="alttext">
-                    <area shape="rect" coords="0,0,415,179" id="p2rock" alt="alttext">
+                    <!-- Scissors -->
+                    <area shape="rect" coords="0,390,415,545" class="p2Selection" data="1" alt="alttext">
+                    <!-- paper -->
+                    <area shape="rect" coords="0,180,415,389" class="p2Selection" data="2" alt="alttext">
+                    <!-- rock -->
+                    <area shape="rect" coords="0,0,415,179" class="p2Selection" data="3" alt="alttext">
                 </map>
-                <ul class="card-text">
-                    <li>Wins: 0</li>
-                    <li>Losses: 0</li>
-                    <li>Draws: 0</li>
+                <ul class="card-text p2Stats">
                 </ul>
             </div>
         </div>

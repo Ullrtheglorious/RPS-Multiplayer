@@ -21,30 +21,30 @@ var yourPlayerName = "";
 var player1Choice = "";
 var player2Choice = "";
 
-var turn = false;
+var turn = 1;
 
 database.ref('players').on("value", function (snapshot) {
 
-    if (snapshot.child("player1").exists && snapshot.child("player2").exists) {
-        $(".playerForm").hide("fast");
-    }
+
 
 
     if (snapshot.child("player1").exists) {
         player1 = snapshot.val().player1;
         player1Name = player1.name;
         $("#playerName1").text(player1.name);
-        
+        $("#nameData").val("")
+        $(".p1Stats").html("Win: " + player1.wins + "<br>" + "Loss: " + player1.losses + "<br>" + "Tie: " + player1.ties);
 
-    } else if (snapshot.child("player2").exists) {
+    } if (snapshot.child("player2").exists) {
         player2 = snapshot.val().player2;
         player1Name = player2.name;
         $("#playerName2").text(player2.name);
+        $("#nameData").val("")
+        $(".p2Stats").html("Win: " + player2.wins + "<br>" + "Loss: " + player2.losses + "<br>" + "Tie: " + player2.ties);
+
     }
 
-    // if (snapshot.child("player1").exists && snapshot.child("player2").exists) {
-    //     $(".playerForm").hide("fast");
-    // }
+
 
 });
 
@@ -72,7 +72,7 @@ $("#nameSubmit").on("click", function () {
                 losses: 0,
                 ties: 0,
                 choice: "",
-                turn: false
+                turn: 1
             };
             
             database.ref('players/player1').set(player1);
@@ -81,7 +81,7 @@ $("#nameSubmit").on("click", function () {
         } else if ((player1 !== null) && (player2 === null)) {
             console.log('Adding Player 2');
 
-            turn = true;
+            turn = 1;
 
             humanName = $("#nameData").val().trim();
 
@@ -91,7 +91,7 @@ $("#nameSubmit").on("click", function () {
                 losses: 0,
                 ties: 0,
                 choice: "",
-                turn: false
+                turn: 2
             };
             $("#playerName2").text(player2.name);
             database.ref('players/player1').update({ 'turn': turn });
@@ -107,28 +107,53 @@ $("#nameSubmit").on("click", function () {
     $(".jumbotron").slideUp("fast");
 });
 
-$("#p1rock").on("click", function () {
+// player one selections // 
+$(".p1Selection").on("click", function () {
     event.preventDefault();
-    console.log("Player one chooses rock");
-});
-$("#p1scissors").on("click", function () {
-    event.preventDefault();
-    console.log("Player one chooses scissors");
-});
-$("#p1paper").on("click", function () {
-    event.preventDefault();
-    console.log("Player one chooses Paper");
-});
-$("#p2rock").on("click", function () {
-    event.preventDefault();
-    console.log("Player two chooses rock");
-});
-$("#p2scissors").on("click", function () {
-    event.preventDefault();
-    console.log("Player two chooses scissors");
-});
-$("#p2paper").on("click", function () {
-    event.preventDefault();
-    console.log("Player two chooses Paper");
-});
+    if (player1 && player2 && (player1Name === player1.name) && (turn === 1)) {
+        var choice = $(this).text().trim();
+        console.log(choice);
+    }
+
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// $("#p1rock").on("click", function () {
+//     event.preventDefault();
+//     console.log("Player one chooses rock");
+// });
+// $("#p1scissors").on("click", function () {
+//     event.preventDefault();
+//     console.log("Player one chooses scissors");
+// });
+// $("#p1paper").on("click", function () {
+//     event.preventDefault();
+//     console.log("Player one chooses Paper");
+// });
+// $("#p2rock").on("click", function () {
+//     event.preventDefault();
+//     console.log("Player two chooses rock");
+// });
+// $("#p2scissors").on("click", function () {
+//     event.preventDefault();
+//     console.log("Player two chooses scissors");
+// });
+// $("#p2paper").on("click", function () {
+//     event.preventDefault();
+//     console.log("Player two chooses Paper");
+// });
 
